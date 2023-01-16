@@ -5,7 +5,7 @@ public class GameOver : MonoBehaviour {
 
 	void Update ()
 	{
-		if (Input.GetButtonDown("Jump"))
+		if (Input.touchCount > 0 && Input.GetTouch(0).phase == TouchPhase.Moved )
 		{
 			GameManager.instance.Restart();
 		}

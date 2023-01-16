@@ -1,9 +1,10 @@
 using UnityEngine.UI;
 using UnityEngine;
+using TMPro;
 
 public class ScoreUI : MonoBehaviour {
 
-	public Text text;
+	public TextMeshProUGUI text;
 
 	RectTransform rt;
 	Vector2 startPos;

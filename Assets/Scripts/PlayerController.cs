@@ -1,4 +1,6 @@
 using UnityEngine;
+using System.Collections;
+using System.Collections.Generic;
 
 public class PlayerController : MonoBehaviour {
 
@@ -8,6 +10,8 @@ public class PlayerController : MonoBehaviour {
 	private float rotation;
 	private Rigidbody rb;
 
+	
+
 	void Start ()
 	{
 		rb = GetComponent<Rigidbody>();
@@ -15,7 +19,18 @@ public class PlayerController : MonoBehaviour {
 
 	void Update ()
 	{
-		rotation = Input.GetAxisRaw("Horizontal");
+		//rotation = Input.GetAxisRaw("Horizontal");
+
+		if (Input.touchCount > 0 && Input.GetTouch(0).phase == TouchPhase.Moved)
+		{
+
+			float xDelta = Input.GetTouch(0).deltaPosition.x;
+			transform.Rotate(0f, -xDelta * rotationSpeed * Time.fixedDeltaTime, 0f, Space.Self);
+
+			//transform.Rotate(0, -xDelta * rotationSpeed * Time.deltaTime, 0);
+		}
+
+
 	}
 
 	void FixedUpdate ()
